@@ -1,6 +1,6 @@
 package asherflo.com.drone.service;
 
-import asherflo.com.drone.controller.requests.DroneRegistrationRequest;
+import asherflo.com.drone.dto.request.DroneRegistrationRequest;
 import asherflo.com.drone.dto.DroneResponse;
 import asherflo.com.drone.model.Drone;
 import asherflo.com.drone.model.enums.Model;

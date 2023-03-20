@@ -1,4 +1,4 @@
-package asherflo.com.drone.controller.requests;
+package asherflo.com.drone.dto.request;
 
 import asherflo.com.drone.model.enums.Model;
 import asherflo.com.drone.model.enums.State;
