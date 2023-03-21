@@ -1,5 +1,5 @@
 package asherflo.com.drone.model.enums;
 
-public enum Model {
+public enum DroneModel {
    LIGHTWEIGHT,MIDDLEWEIGHT,CRUISERWEIGHT,HEAVYWEIGHT
 }

@@ -1,7 +1,7 @@
 package asherflo.com.drone.dto.request;
 
-import asherflo.com.drone.model.enums.Model;
-import asherflo.com.drone.model.enums.State;
+import asherflo.com.drone.model.enums.DroneModel;
+import asherflo.com.drone.model.enums.DroneState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +14,9 @@ import lombok.Setter;
 
 public class DroneRegistrationRequest {
     private  String serialNumber;
-    private Model model;
+    private DroneModel droneModel;
     private int  weightLimit;
     private String batteryCapacity;
-    private State state;
+    private DroneState droneState;
 
 }

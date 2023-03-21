@@ -2,8 +2,9 @@ package asherflo.com.drone.service;
 
 import asherflo.com.drone.dto.request.DroneRegistrationRequest;
 import asherflo.com.drone.dto.DroneResponse;
-import asherflo.com.drone.model.enums.Model;
-import asherflo.com.drone.model.enums.State;
+import asherflo.com.drone.dto.request.LoadDroneRequest;
+import asherflo.com.drone.model.enums.DroneModel;
+import asherflo.com.drone.model.enums.DroneState;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,17 @@ class DroneServiceTest {
     void testThatADroneCanBeRegister(){
         DroneRegistrationRequest droneRegistrationRequest = new DroneRegistrationRequest();
         droneRegistrationRequest.setSerialNumber("BIG023");
-        droneRegistrationRequest.setModel(Model.LIGHTWEIGHT);
+        droneRegistrationRequest.setDroneModel(DroneModel.LIGHTWEIGHT);
         droneRegistrationRequest.setWeightLimit(386);
         droneRegistrationRequest.setBatteryCapacity("95%");
-        droneRegistrationRequest.setState(State.LOADING);
+        droneRegistrationRequest.setDroneState(DroneState.LOADING);
         DroneResponse response = droneService.registerDrone(droneRegistrationRequest);
         assertNotNull(response);
-
+    }
+    @Test
+    @DisplayName("To load a drone")
+    void testThatADroneCanLoadedWithMedication(){
+       LoadDroneRequest loadDroneRequest = new LoadDroneRequest();
 
     }
 

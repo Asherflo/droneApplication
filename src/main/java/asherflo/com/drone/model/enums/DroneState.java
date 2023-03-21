@@ -1,6 +1,6 @@
 package asherflo.com.drone.model.enums;
 
-public enum State {
+public enum DroneState {
    IDLE, LOADING, LOADED,DELIVERING,DELIVERED,RETURNING
 
 }
