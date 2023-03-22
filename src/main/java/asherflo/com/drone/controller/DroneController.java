@@ -1,9 +1,8 @@
 package asherflo.com.drone.controller;
 
-import asherflo.com.drone.dto.ApiResponse;
-import asherflo.com.drone.dto.DroneResponse;
+import asherflo.com.drone.dto.response.ApiResponse;
+import asherflo.com.drone.dto.response.DroneResponse;
 import asherflo.com.drone.dto.request.DroneRegistrationRequest;
-import asherflo.com.drone.model.Drone;
 import asherflo.com.drone.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

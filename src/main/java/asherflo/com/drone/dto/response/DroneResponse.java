@@ -1,4 +1,4 @@
-package asherflo.com.drone.dto;
+package asherflo.com.drone.dto.response;
 
 import asherflo.com.drone.model.Drone;
 import lombok.Data;

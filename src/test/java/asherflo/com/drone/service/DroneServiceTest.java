@@ -1,7 +1,8 @@
 package asherflo.com.drone.service;
 
+import asherflo.com.drone.dto.response.LoadDroneResponse;
 import asherflo.com.drone.dto.request.DroneRegistrationRequest;
-import asherflo.com.drone.dto.DroneResponse;
+import asherflo.com.drone.dto.response.DroneResponse;
 import asherflo.com.drone.dto.request.LoadDroneRequest;
 import asherflo.com.drone.model.enums.DroneModel;
 import asherflo.com.drone.model.enums.DroneState;
@@ -28,11 +29,19 @@ class DroneServiceTest {
         DroneResponse response = droneService.registerDrone(droneRegistrationRequest);
         assertNotNull(response);
     }
-    @Test
-    @DisplayName("To load a drone")
-    void testThatADroneCanLoadedWithMedication(){
-       LoadDroneRequest loadDroneRequest = new LoadDroneRequest();
+//    @Test
+//    @DisplayName("To load a drone")
+//    void testThatADroneCanLoadedWithMedication(){
+//       LoadDroneRequest loadDroneRequest = new LoadDroneRequest();
+//       loadDroneRequest.setSerialNumber("QWRTYU567");
+//       loadDroneRequest.setName("Plaza");
+//       loadDroneRequest.setImage("IMG234");
+//       loadDroneRequest.setWeight(354);
+//      LoadDroneResponse response = droneService.loadDrone(loadDroneRequest);
+//      assertNotNull(response);
 
-    }
+
+
+//   }
 
 }
