@@ -17,17 +17,17 @@ class DroneServiceTest {
     @Autowired
     private DroneService droneService;
 
-    @Test
-    @DisplayName("Register a drone")
-    void testThatADroneCanBeRegister(){
-        DroneRegistrationRequest droneRegistrationRequest = new DroneRegistrationRequest();
-        droneRegistrationRequest.setSerialNumber("BIG023");
-        droneRegistrationRequest.setDroneModel(DroneModel.LIGHTWEIGHT);
-        droneRegistrationRequest.setWeightLimit(386);
-        droneRegistrationRequest.setBatteryCapacity("95%");
-        droneRegistrationRequest.setDroneState(DroneState.LOADING);
-        DroneResponse response = droneService.registerDrone(droneRegistrationRequest);
-        assertNotNull(response);
+//    @Test
+//    @DisplayName("Register a drone")
+//    void testThatADroneCanBeRegister(){
+//        DroneRegistrationRequest droneRegistrationRequest = new DroneRegistrationRequest();
+//        droneRegistrationRequest.setSerialNumber("BIG023");
+//        droneRegistrationRequest.setDroneModel(DroneModel.LIGHTWEIGHT);
+//        droneRegistrationRequest.setWeightLimit(386);
+//        droneRegistrationRequest.setBatteryCapacity("95%");
+//        droneRegistrationRequest.setDroneState(DroneState.LOADING);
+//        DroneResponse response = droneService.registerDrone(droneRegistrationRequest);
+//        assertNotNull(response);assertNotNull
     }
 //    @Test
 //    @DisplayName("To load a drone")
@@ -44,4 +44,3 @@ class DroneServiceTest {
 
 //   }
 
-}

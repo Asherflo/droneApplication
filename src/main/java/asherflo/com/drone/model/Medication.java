@@ -20,7 +20,7 @@ public class Medication {
     private Long id;
     @NotBlank
     private String name;
-    private int weight;
+    private double weight;
     @Pattern(regexp = "[A-Z_0-9]+")
     private String code;
     private String image;

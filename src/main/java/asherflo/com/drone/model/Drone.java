@@ -5,7 +5,7 @@ import asherflo.com.drone.model.enums.DroneState;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -24,36 +24,26 @@ public class Drone {
     private  String serialNumber;
     @Enumerated(EnumType.STRING)
     private DroneModel droneModel;
-    private int  weightLimit;
+    private final double WEIGHTLIMIT = 500.0;
+
+    private double loadedWeight;
     private String batteryCapacity;
     @Enumerated(EnumType.STRING)
     private DroneState droneState;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "medication_id")
-    private Medication medication;
+    private List <Medication> medications = new ArrayList<>();
+
+    public double cumulateLoadedWeight(){
+        double loadedWeight = 0.0;
+        if(medications.size() > 0) {
+            for (Medication medication :
+                    medications) {
+                loadedWeight += medication.getWeight();
+            }
+        }
+        return loadedWeight;
+    }
+
 }
-
-//    @OneToMany(mappedBy = "drone")
-//    @JoinColumn(name="medication_id")
-//    private List<Medication> medications;
-
-//    public void addMedication(Medication medication) {
-//        if (weightLimit < 500) {
-//            this.medication.add(medication);
-//            this.weightLimit += medication.getWeight();
-//        }
-//        throw new RuntimeException();
-//
-//    }
-//
-//    public void removeMedication(Medication medication) {
-//        this.medications.remove(medication);
-//        this.weightLimit -= medication.getWeight();
-//    }
-//
-//    public List<Medication> getMedications() {
-//        return medications;
-//}
-//
-//}

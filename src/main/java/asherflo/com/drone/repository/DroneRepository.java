@@ -1,7 +1,7 @@
 package asherflo.com.drone.repository;
 
 import asherflo.com.drone.model.Drone;
-import asherflo.com.drone.model.enums.DroneState;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

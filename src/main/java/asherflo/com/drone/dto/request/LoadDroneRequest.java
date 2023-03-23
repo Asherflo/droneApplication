@@ -1,7 +1,7 @@
 package asherflo.com.drone.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import lombok.Setter;
 
 public class LoadDroneRequest {
     private  String serialNumber;
-    private int weight;
+    private double weight;
     private String code;
 
     private String name;
