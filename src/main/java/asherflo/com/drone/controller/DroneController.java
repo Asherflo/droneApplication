@@ -58,4 +58,28 @@ public class DroneController {
 
     }
 
+    @GetMapping("/view_available")
+    public ResponseEntity <?> viewAvailableDrone(){
+        List<DroneResponse> response = droneService.viewAvailableDrone();
+        ApiResponse apiResponse = ApiResponse.builder()
+                .statusCode(302)
+                .data(response)
+                .successful(true)
+                .build();
+        return  new ResponseEntity<>(apiResponse,HttpStatus.FOUND);
+
+    }
+
+    @GetMapping("/battery")
+    public ResponseEntity<?> batteryCheck(@RequestParam String serialNumber) throws DroneException {
+        ApiResponse apiResponse = ApiResponse.builder()
+                .statusCode(302)
+                .data(droneService.batteryCheck(serialNumber))
+                .successful(true)
+                .build();
+
+        return new ResponseEntity<>(apiResponse, HttpStatus.FOUND);
+    }
+
+
 }

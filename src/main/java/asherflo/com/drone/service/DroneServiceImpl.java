@@ -35,10 +35,7 @@ public class DroneServiceImpl implements DroneService{
                 .droneModel(droneRegistrationRequest.getDroneModel())
                 .build();
         Drone savedDrone = droneRepository.save(drone);
-        DroneResponse response = new DroneResponse();
-        response.setMessage("Drone successfully registered");
-        response.setDrone(savedDrone);
-        return response;
+        return buildDroneResponse(savedDrone);
     }
 
     @Override
@@ -62,6 +59,14 @@ public class DroneServiceImpl implements DroneService{
         loadDroneResponse.setMedication(medication);
         return loadDroneResponse;
     }
+    private void changeDroneStatus(Drone drone) {
+        if(drone.cumulateLoadedWeight() < drone.getWEIGHT_LIMIT()){
+            drone.setDroneState(DroneState.LOADING);
+        }
+        if(drone.cumulateLoadedWeight() == drone.getWEIGHT_LIMIT()){
+            drone.setDroneState(DroneState.LOADED);
+        }
+    }
 
 
     @Override
@@ -74,15 +79,29 @@ public class DroneServiceImpl implements DroneService{
         return drone.getMedications().stream().map(this:: buildMedicalResponse).toList();
     }
 
-    public BatteryResponse batteryCheck(){
-        List<Drone> allDrones = droneRepository.findAll();
-//        allDrones.stream().map(this::createAuditResponse()).toList();
-        return null;
+    @Override
+    public List<DroneResponse> viewAvailableDrone() {
+        var drones =  droneRepository.findByAvailableDroneByState();
+        List<DroneResponse> availableDrones = drones.stream().map(this::buildDroneResponse).toList();
+        return availableDrones;
+    }
+    @Override
+    public BatteryResponse batteryCheck(String serialNumber) throws DroneException {
+        Optional <Drone> found = droneRepository.findBySerialNumber(serialNumber);
+        if(found.isEmpty()){
+            throw new DroneException("Not found");
+        }
+        Drone drone = found.get();
+        return BatteryResponse.builder()
+                .batteryLevel(drone.getBatteryCapacity())
+                .serialNumber(drone.getSerialNumber())
+                .droneModel(drone.getDroneModel().toString())
+                .build();
     }
 
     private BatteryResponse createAuditResponse(Drone drone){
         return BatteryResponse.builder()
-                .droneId(drone.getId())
+//                .serialNumber(drone.getId())
                 .droneModel(drone.getDroneModel().toString())
                 .serialNumber(drone.getSerialNumber())
                 .batteryLevel(drone.getBatteryCapacity())
@@ -106,6 +125,18 @@ public class DroneServiceImpl implements DroneService{
                 .weight(medication.getWeight())
                 .build();
     }
+    private DroneResponse buildDroneResponse(Drone drone){
+        return DroneResponse.builder()
+                .batteryCapacity(drone.getBatteryCapacity())
+                .droneModel(drone.getDroneModel().toString())
+                .droneState(drone.getDroneState().toString())
+                .loadedWeight(drone.getLoadedWeight())
+                .medications(drone.getMedications())
+                .weightLimit(drone.getWEIGHT_LIMIT())
+                .serialNumber(drone.getSerialNumber())
+                .build();
+    }
+
 
 
 
