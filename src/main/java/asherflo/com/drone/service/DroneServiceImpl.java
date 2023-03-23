@@ -48,7 +48,7 @@ public class DroneServiceImpl implements DroneService{
             throw new DroneException("Drone specified does not exist");
         }
         Drone drone = savedDrone.get();
-        if (drone.cumulateLoadedWeight() >= drone.getWEIGHTLIMIT() || (drone.cumulateLoadedWeight() + loadRequest.getWeight()) > drone.getWEIGHTLIMIT()) {
+        if (drone.cumulateLoadedWeight() >= drone.getWEIGHT_LIMIT() || (drone.cumulateLoadedWeight() + loadRequest.getWeight()) > drone.getWEIGHT_LIMIT()) {
             throw new DroneException("The Drone cannot load more than the weight limit");
         }
         AddMedicationRequest request = buildMedicalRequest(loadRequest);

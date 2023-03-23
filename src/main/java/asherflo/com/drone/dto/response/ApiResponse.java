@@ -8,9 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ApiResponse {
-    private  String status;
-    private String message;
+    private  int statusCode;
     private Object data;
-    private int result;
+    private boolean successful;
+
 
 }

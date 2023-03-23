@@ -24,7 +24,7 @@ public class Drone {
     private  String serialNumber;
     @Enumerated(EnumType.STRING)
     private DroneModel droneModel;
-    private final double WEIGHTLIMIT = 500.0;
+    private final double WEIGHT_LIMIT = 500.0;
 
     private double loadedWeight;
     private String batteryCapacity;
