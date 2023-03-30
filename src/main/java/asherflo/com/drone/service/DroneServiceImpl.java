@@ -82,8 +82,7 @@ public class DroneServiceImpl implements DroneService{
     @Override
     public List<DroneResponse> viewAvailableDrone() {
         var drones =  droneRepository.findByAvailableDroneByState();
-        List<DroneResponse> availableDrones = drones.stream().map(this::buildDroneResponse).toList();
-        return availableDrones;
+        return drones.stream().map(this::buildDroneResponse).toList();
     }
     @Override
     public BatteryResponse batteryCheck(String serialNumber) throws DroneException {
